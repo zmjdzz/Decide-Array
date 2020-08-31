@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Array {
+public:
+	bool sequence(string s, string t)//判断s是否为t的子序列
+	{
+		int len1 = s.length();//字符串s的长度
+		int len2 = t.length();//字符串t的长度
+
+		int i = 0, j = 0;//初始化
+		while (i < len1 && j < len2)//大于s,t任一长度，退出循环
+		{
+			if (s[i] == t[j])//i 来遍历 s，j 来遍历 t,当 s[i] == t[j] 时，让 i 和 j 同时指向字符串的下一个元素
+			{
+				i++;
+				j++;
+			}
+			else {
+				j++; //当 s[i] != t[j] 时，说明 s[i] 需要和 t[j] 后面的字符进行匹配，所以让 j 指向 s 串的下一个字符
+			}
+		}
+
+		if (i == s.length())//若s遍历完，证明s是t的子序列，返回true
+			return true;
+		else
+			return false;//s没有遍历完，证明s不是t的子序列，返回false
+	}
+};
+int main()
+{
+	Array p;//实例化Array类对象
+	cout << p.sequence("db", "aedbs") << endl;//调用成员函数
+	int a = 0;//初始化a接受函数的值
+	a = p.sequence("db", "aedbs");
+	if (a = 1)
+		cout << "s是t的子序列" << endl;//如果函数值为1，s是t的子序列
+	if (a = 0)
+		cout << "s不是t的子序列" << endl;//如果函数值为0，s不是t的子序列
+	system("pause");
+}
+
